@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 # Create your models here.
@@ -9,7 +10,7 @@ class EventStatus(models.Model):
 
 class Event(models.Model):
     client = models.ForeignKey(to=Client)
-    supportContact = models.ForeignKey(to=Employe)
+    supportContact = models.ForeignKey(to=settings.AUTH_USER_MODEL)
     eventStatus = models.ForeignKey(to=EventStatus)
     attendees = models.IntegerField()
     eventDate = models.DateTimeField()
