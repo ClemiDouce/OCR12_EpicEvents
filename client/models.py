@@ -12,3 +12,11 @@ class Client(models.Model):
     companyName = models.CharField(max_length=250)
     dateCreated = models.DateTimeField(auto_now_add=True)
     dateUpdated = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.firstName} {self.lastName}"
+
+    class Meta:
+        verbose_name = "Client"
+        verbose_name_plural = "Clients"
+        ordering = ['lastName']

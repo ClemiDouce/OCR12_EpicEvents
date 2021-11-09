@@ -8,6 +8,9 @@ from client.models import Client
 class EventStatus(models.Model):
     libelle = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.libelle
+
 class Event(models.Model):
     client = models.ForeignKey(to=Client, on_delete=models.CASCADE)
     supportContact = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -17,3 +20,11 @@ class Event(models.Model):
     note = models.CharField(max_length=20)
     dateCreated = models.DateTimeField(auto_now_add=True)
     dateUpdated = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.client} {self.supportContact}"
+
+    class Meta:
+        verbose_name = "Contract"
+        verbose_name_plural = "Contracts"
+        ordering = ['eventDate']

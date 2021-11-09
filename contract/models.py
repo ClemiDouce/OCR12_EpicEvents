@@ -13,3 +13,11 @@ class Contract(models.Model):
     status = models.BooleanField()
     amount = models.FloatField()
     paymentDue = models.DateTimeField()
+
+    def __str__(self):
+        return f"{self.client} {self.saleContact}"
+
+    class Meta:
+        verbose_name = "Contract"
+        verbose_name_plural = "Contracts"
+        ordering = ['dateCreated']
