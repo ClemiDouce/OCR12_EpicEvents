@@ -9,9 +9,9 @@ class EventStatus(models.Model):
     libelle = models.CharField(max_length=30)
 
 class Event(models.Model):
-    client = models.ForeignKey(to=Client)
+    client = models.ForeignKey(to=Client, on_delete=models.CASCADE)
     supportContact = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    eventStatus = models.ForeignKey(to=EventStatus)
+    eventStatus = models.ForeignKey(to=EventStatus, on_delete=models.CASCADE)
     attendees = models.IntegerField()
     eventDate = models.DateTimeField()
     note = models.CharField(max_length=20)

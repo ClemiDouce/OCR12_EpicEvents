@@ -7,4 +7,4 @@ class Team(models.Model):
 
 
 class Employe(AbstractUser):
-    team = models.ForeignKey(to=Team)
+    team = models.ForeignKey(to=Team, on_delete=models.CASCADE)
