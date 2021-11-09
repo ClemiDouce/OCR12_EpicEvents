@@ -10,7 +10,7 @@ class EventStatus(models.Model):
 
 class Event(models.Model):
     client = models.ForeignKey(to=Client)
-    supportContact = models.ForeignKey(to=settings.AUTH_USER_MODEL)
+    supportContact = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     eventStatus = models.ForeignKey(to=EventStatus)
     attendees = models.IntegerField()
     eventDate = models.DateTimeField()
