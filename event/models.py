@@ -25,6 +25,6 @@ class Event(models.Model):
         return f"{self.client} {self.supportContact}"
 
     class Meta:
-        verbose_name = "Contract"
-        verbose_name_plural = "Contracts"
+        verbose_name = "Event"
+        verbose_name_plural = "Events"
         ordering = ['eventDate']
