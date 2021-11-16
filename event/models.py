@@ -11,13 +11,14 @@ class EventStatus(models.Model):
     def __str__(self):
         return self.libelle
 
+
 class Event(models.Model):
-    client = models.ForeignKey(to=Client, on_delete=models.CASCADE)
-    supportContact = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    eventStatus = models.ForeignKey(to=EventStatus, on_delete=models.CASCADE)
+    client = models.ForeignKey(to=Client, on_delete=models.CASCADE, null=True)
+    supportContact = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+    eventStatus = models.ForeignKey(to=EventStatus, on_delete=models.CASCADE, default=1)
     attendees = models.IntegerField()
     eventDate = models.DateTimeField()
-    note = models.CharField(max_length=20)
+    note = models.CharField(max_length=20, blank=True)
     dateCreated = models.DateTimeField(auto_now_add=True)
     dateUpdated = models.DateTimeField(auto_now_add=True)
 

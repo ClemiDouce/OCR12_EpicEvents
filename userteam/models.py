@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
 # Create your models here.
 class Team(models.Model):
     name = models.CharField(max_length=30)
@@ -19,3 +20,6 @@ class Employe(AbstractUser):
         verbose_name = "Employee"
         verbose_name_plural = "Employees"
         ordering = ['last_name']
+
+    def get_team_name(self):
+        return self.team.name.lower()
