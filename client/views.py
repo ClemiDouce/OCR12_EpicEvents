@@ -1,5 +1,4 @@
 from rest_framework import viewsets
-
 # Create your views here.
 from rest_framework.generics import get_object_or_404
 
@@ -24,4 +23,4 @@ class ClientViewset(viewsets.ModelViewSet):
         return False
 
     def perform_create(self, serializer):
-        serializer.save(salesContact = self.request.user)
+        serializer.save(salesContact=self.request.user)
