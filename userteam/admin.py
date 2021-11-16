@@ -1,11 +1,11 @@
-from django.contrib import admin
 from django import forms
+from django.contrib import admin
 
 # Register your models here.
 from userteam.models import Employe, Team
 
-
 admin.site.register(Team)
+
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -19,6 +19,7 @@ class UserForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
 
 @admin.register(Employe)
 class UserAdmin(admin.ModelAdmin):

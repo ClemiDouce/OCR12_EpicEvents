@@ -8,4 +8,4 @@ admin.site.register(EventStatus)
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('client', 'supportContact', 'eventStatus', 'attendees', 'eventDate', 'note')
+    list_display = ('id', 'client', 'supportContact', 'eventStatus', 'attendees', 'eventDate', 'note')

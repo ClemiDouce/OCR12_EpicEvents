@@ -6,4 +6,4 @@ from client.models import Client
 
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ("__str__", "email", "phone", "mobile", "companyName")
+    list_display = ('id', "__str__", "email", "phone", "mobile", "companyName")
