@@ -1,3 +1,4 @@
+import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -72,7 +73,7 @@ DATABASES = {
 
     'default': {
 
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
         'NAME': "epicevents",
 
@@ -180,4 +181,56 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
+LOGGING = {
+    'version': 1,
+    # Version of logging
+    'disable_existing_loggers': False,
+    # disable logging
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    # Handlers #############################################################
+    'handlers': {
+        'file': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': 'epic-event-debug.log',
+            'formatter': 'verbose'
+        },
+        ########################################################################
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+            'level': "INFO"
+        },
+    },
+    # Loggers ####################################################################
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'contract': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+        },
+        'client': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+        },
+        'event': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+        }
+    },
 }
