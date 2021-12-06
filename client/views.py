@@ -11,6 +11,7 @@ from userteam.models import Employe
 
 logger = logging.getLogger(__name__)
 
+
 class ClientViewset(viewsets.ModelViewSet):
     serializer_class = ClientSerializer
     permission_classes = [ClientPermission]

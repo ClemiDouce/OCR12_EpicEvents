@@ -1,6 +1,5 @@
 import logging
 
-from django.http import Http404
 from rest_framework import viewsets
 # Create your views here.
 from rest_framework.generics import get_object_or_404
@@ -11,6 +10,7 @@ from contract.permissions import ContractPermission
 from contract.serializers import ContractSerializer
 
 logger = logging.getLogger(__name__)
+
 
 class ContractViewset(viewsets.ModelViewSet):
     serializer_class = ContractSerializer
@@ -28,8 +28,6 @@ class ContractViewset(viewsets.ModelViewSet):
             serializer.save(saleContact=self.request.user, client=client)
         except Client.DoesNotExist:
             logger.warning("Client not found")
-
-
 
 
 class SelfContractViewset(viewsets.ModelViewSet):

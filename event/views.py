@@ -13,6 +13,7 @@ from userteam.models import Employe
 
 logger = logging.getLogger(__name__)
 
+
 class EventViewset(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     permission_classes = [EventPermission]
