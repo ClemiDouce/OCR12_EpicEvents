@@ -11,6 +11,10 @@ class EventStatus(models.Model):
     def __str__(self):
         return self.libelle
 
+    class Meta:
+        verbose_name = "EventStatus"
+        verbose_name_plural = "EventStatus"
+
 
 class Event(models.Model):
     client = models.ForeignKey(to=Client, on_delete=models.CASCADE, null=True)

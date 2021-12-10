@@ -37,15 +37,14 @@ class EventViewset(viewsets.ModelViewSet):
             queryset = queryset.filter(client__email=client_email)
         if contract_date is not None:
             queryset = queryset.filter(dateCreated=contract_date)
-
+        logger.info(f"List of Events queried by {self.request.user.username}")
         return queryset
 
     def perform_create(self, serializer):
-        try:
-            client = get_object_or_404(Client, pk=self.kwargs['client_id'])
-            serializer.save(client=client)
-        except Http404:
-            logger.debug("Client not found")
+        client = get_object_or_404(Client, pk=self.kwargs['client_id'])
+        logger.info("Event created")
+        serializer.save(client=client)
+
 
 
 class SelfEventViewset(viewsets.ModelViewSet):

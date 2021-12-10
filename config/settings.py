@@ -201,7 +201,7 @@ LOGGING = {
     # Handlers #############################################################
     'handlers': {
         'file': {
-            'level': 'WARNING',
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': 'epic-event-debug.log',
             'formatter': 'verbose'
@@ -210,7 +210,7 @@ LOGGING = {
         'console': {
             'class': 'logging.StreamHandler',
             'formatter': 'simple',
-            'level': "INFO"
+            'level': "DEBUG"
         },
     },
     # Loggers ####################################################################

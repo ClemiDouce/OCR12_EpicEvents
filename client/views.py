@@ -31,7 +31,9 @@ class ClientViewset(viewsets.ModelViewSet):
             queryset = queryset.filter(lastName=client_name)
         if client_email is not None:
             queryset = queryset.filter(email=client_email)
+        logger.info(f"List of Client queried by {self.request.user.username}")
         return queryset
 
     def perform_create(self, serializer):
+        logger.info("Client created")
         serializer.save(salesContact=self.request.user)

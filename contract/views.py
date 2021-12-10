@@ -18,16 +18,14 @@ class ContractViewset(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """Renvoie la liste des contrats du clients"""
-        logger.warning('Comment ca va la mif')
         client = get_object_or_404(Client, pk=self.kwargs['client_id'])
+        logger.info(f"List of Contract queried by {self.request.user.username}")
         return client.contract_set.filter(saleContact=self.request.user)
 
     def perform_create(self, serializer):
-        try:
-            client = Client.objects.get(pk=self.kwargs['client_id'])
-            serializer.save(saleContact=self.request.user, client=client)
-        except Client.DoesNotExist:
-            logger.warning("Client not found")
+        client = Client.objects.get(pk=self.kwargs['client_id'])
+        logger.info("Contract created")
+        serializer.save(saleContact=self.request.user, client=client)
 
 
 class SelfContractViewset(viewsets.ModelViewSet):
